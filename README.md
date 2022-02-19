@@ -5,6 +5,6 @@ The app makes use of Slack's Events API. It listens to the `user_change` event f
 This app is build on top of a starter heroku project:
 https://devcenter.heroku.com/articles/getting-started-with-php
 
-The `index.php` file is located at /web/index.php
+The `index.php` file is located at `/web/index.php`
 
 The `LOG.md` keeps all the work logs
