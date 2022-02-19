@@ -2,6 +2,9 @@
 define('TOKEN', getenv('TOKEN'));
 define('CHANNEL', getenv('CHANNEL'));
 
+echo TOKEN . '\n';
+echo CHANNEL . '\n';
+
 http_response_code(301);
 
 // Grab event data from the request
