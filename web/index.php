@@ -2,13 +2,13 @@
 define('TOKEN', getenv('TOKEN'));
 define('CHANNEL', getenv('CHANNEL'));
 
-echo TOKEN . '\n';
-echo CHANNEL . '\n';
+echo TOKEN . "\n";
+echo CHANNEL . "\n";
 
-http_response_code(301);
+http_response_code(200);
 
 // Grab event data from the request
-$input = $_POST['body'];
+$input = file_get_contents('php://input');;
 $json = json_decode($input, FALSE);
 $type = $json->type;
 
