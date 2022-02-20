@@ -85,8 +85,8 @@ function postMessage($payload) {
     // Build the full URL call to the API.
     $callurl = "https://slack.com/api/chat.postMessage";
 
-    // add our payload passed through the function.
-    $args = http_build_query($payload);
+//    // add our payload passed through the function.
+//    $args = http_build_query($payload);
 
     // Let's build a cURL query.
     $ch = curl_init($callurl);
@@ -94,17 +94,17 @@ function postMessage($payload) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 
-    $headers = array("Content-Type: application/x-www-form-urlencoded");
-    curl_setopt($ch, CURLOPT_HEADER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//    $headers = array("Content-Type: application/x-www-form-urlencoded");
+//    curl_setopt($ch, CURLOPT_HEADER, true);
+//    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $args);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
 
     $response = curl_exec($ch);
 
     file_put_contents("php://stderr", $response);
 
-    $ch_response = $response;
+    $ch_response = json_decode($response);
     if ($ch_response->ok == FALSE) {
         error_log($ch_response->error);
     }
