@@ -28,6 +28,8 @@ switch ($type) {
 
             case 'user_change':
 
+                file_put_contents("php://stderr", json_encode($json->event->user));
+
                 // Grab some data about the user;
                 $userid = $json->event->user->id;
                 $username = $json->event->user->real_name_normalized;

@@ -21,3 +21,5 @@
 10. After triggering `user_change` event, some logs can be found in Heroku with very general info. Nothing comes up in the app. Adding more logs to check.
 
 11. Fix the event name from `status_change` to `user_change`
+
+12. Found a bug `Undefined property: stdClass::$real_name_normalized in /app/web/index.php on line 33`. Add a debug log to check the structure of the `event->user`.
