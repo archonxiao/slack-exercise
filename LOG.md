@@ -26,4 +26,8 @@
 
 13. Fix the bug in #12 by adding the missing layer `profile` between `user` and `real_name_normalized`
 
-14. Add a debug log to validate `$payload` for `postMessage` function
+14. Add a debug log to validate `$payload` for `postMessage` function. The `$payload` looks valid, but the app is still not working.
+    
+15. Use Postman to validate the `chat.postMessage` API and got `missing_scope` response. The instruction provided seems to be outdated. Add `chat:write` scope for user and everything works fine in Postman.
+
+16. 
