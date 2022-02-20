@@ -9,8 +9,6 @@ $input = file_get_contents('php://input');;
 $json = json_decode($input, FALSE);
 $type = $json->type ?? null;
 
-file_put_contents("php://stderr", $type);
-
 switch ($type) {
 
     case 'url_verification':
@@ -26,11 +24,9 @@ switch ($type) {
 
     case 'event_callback':
 
-        file_put_contents("php://stderr", $json->event->type);
-
         switch ($json->event->type) {
 
-            case 'status_change':
+            case 'user_change':
 
                 // Grab some data about the user;
                 $userid = $json->event->user->id;

@@ -20,3 +20,4 @@
 
 10. After triggering `user_change` event, some logs can be found in Heroku with very general info. Nothing comes up in the app. Adding more logs to check.
 
+11. Fix the event name from `status_change` to `user_change`
