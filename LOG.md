@@ -35,3 +35,5 @@
     b. Remove the code that handles upload files<br />
     c. Add missing Curl options<br />
     d. Add a debug log for Curl response
+    
+17. Found another bug `PHP Notice:  Array to string conversion in /app/web/index.php on line 98`. Add `http_build_query` function back to fix the issue.

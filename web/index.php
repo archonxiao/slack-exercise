@@ -85,6 +85,9 @@ function postMessage($payload) {
     // Build the full URL call to the API.
     $callurl = "https://slack.com/api/chat.postMessage";
 
+    // add our payload passed through the function.
+    $args = http_build_query($payload);
+
     // Let's build a cURL query.
     $ch = curl_init($callurl);
     curl_setopt($ch, CURLOPT_USERAGENT, "Slack Technical Exercise");
@@ -95,7 +98,7 @@ function postMessage($payload) {
     curl_setopt($ch, CURLOPT_HEADER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $args);
 
     $response = curl_exec($ch);
 
