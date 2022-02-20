@@ -28,11 +28,9 @@ switch ($type) {
 
             case 'user_change':
 
-                file_put_contents("php://stderr", json_encode($json->event->user));
-
                 // Grab some data about the user;
                 $userid = $json->event->user->id;
-                $username = $json->event->user->real_name_normalized;
+                $username = $json->event->user->profile->real_name_normalized;
                 $status_text = $json->event->user->profile->status_text;
                 $status_emoji = $json->event->user->profile->status_emoji;
 
@@ -63,7 +61,6 @@ switch ($type) {
                     'channel' => CHANNEL,
                     'attachments' => $attachments,
                 ];
-
 
                 postMessage($payload);
 

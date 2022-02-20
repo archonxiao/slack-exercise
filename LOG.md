@@ -23,3 +23,5 @@
 11. Fix the event name from `status_change` to `user_change`
 
 12. Found a bug `Undefined property: stdClass::$real_name_normalized in /app/web/index.php on line 33`. Add a debug log to check the structure of the `event->user`.
+
+13. Fix the bug in #12 by adding the missing layer `profile` between `user` and `real_name_normalized`
