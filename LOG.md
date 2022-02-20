@@ -30,4 +30,8 @@
     
 15. Use Postman to validate the `chat.postMessage` API and got `missing_scope` response. The instruction provided seems to be outdated. Add `chat:write` scope for user and everything works fine in Postman.
 
-16. 
+16. Modify `postMessage` function and try again.<br />
+    a. Remove args<br />
+    b. Remove the code that handles upload files<br />
+    c. Add missing Curl options<br />
+    d. Add a debug log for Curl response
