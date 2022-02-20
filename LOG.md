@@ -41,3 +41,5 @@
 18. Getting `invalid_array_arg` error. From the logs in Heroku, it looks like the header has been set to `applciation/json`. Update the `CURLOPT_POSTFIELDS` option to use json string.
 
 19. Getting `invalid_form_data` error. Set header to include `application/json` as content type.
+
+20. Getting `not_authed` error. Add Bearer token to header.
