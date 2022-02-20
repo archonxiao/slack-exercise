@@ -4,6 +4,16 @@
 
 3. Follow the `README.md` provided in the exercise to complete steps 1-7
 
-4. Deploy the project to check
+4. Deploy the project to check (step 10)
 
 5. Validate environment variables have been added successfully
+
+6. Encounter issue when trying to follow steps 11-13. 
+   By examining the logs from Heroku, `$_POST['body']` does not seem to work in this case.
+   After some research, replacing `$_POST['body']` with `file_get_contents('php://input')` to check.
+   
+7. Fix bug `Trying to get property 'type' of non-object in /app/web/index.php on line 13`
+
+8. Fix bug `Array to string conversion in /app/web/index.php on line 25`
+
+9. Add `default` block for `switch` statement

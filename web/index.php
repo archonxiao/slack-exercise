@@ -2,15 +2,12 @@
 define('TOKEN', getenv('TOKEN'));
 define('CHANNEL', getenv('CHANNEL'));
 
-echo TOKEN . "\n";
-echo CHANNEL . "\n";
-
 http_response_code(200);
 
 // Grab event data from the request
 $input = file_get_contents('php://input');;
 $json = json_decode($input, FALSE);
-$type = $json->type;
+$type = $json->type ?? null;
 
 
 switch ($type) {
@@ -22,8 +19,7 @@ switch ($type) {
             'challenge' => $challenge,
         );
         header('Content-type: application/json');
-        print $response;
-
+        echo json_encode($response);
 
         break;
 
@@ -74,6 +70,11 @@ switch ($type) {
 
         }
 
+        break;
+
+    default:
+
+        file_put_contents("php://stderr", 'No request or incorrect request/type');
 }
 
 
