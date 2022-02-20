@@ -62,6 +62,8 @@ switch ($type) {
                     'attachments' => $attachments,
                 ];
 
+                file_put_contents("php://stderr", json_encode($payload));
+
                 postMessage($payload);
 
                 break;
