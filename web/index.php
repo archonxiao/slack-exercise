@@ -94,9 +94,9 @@ function postMessage($payload) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 
-//    $headers = array("Content-Type: application/x-www-form-urlencoded");
-//    curl_setopt($ch, CURLOPT_HEADER, true);
-//    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    $headers = array("Content-Type: application/json");
+    curl_setopt($ch, CURLOPT_HEADER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
 

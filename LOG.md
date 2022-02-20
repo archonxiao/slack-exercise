@@ -39,3 +39,5 @@
 17. Found another bug `PHP Notice:  Array to string conversion in /app/web/index.php on line 98`. Add `http_build_query` function back to fix the issue.
 
 18. Getting `invalid_array_arg` error. From the logs in Heroku, it looks like the header has been set to `applciation/json`. Update the `CURLOPT_POSTFIELDS` option to use json string.
+
+19. Getting `invalid_form_data` error. Set header to include `application/json` as content type.
