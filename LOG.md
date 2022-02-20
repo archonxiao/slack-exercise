@@ -44,6 +44,10 @@
 
 20. Getting `not_authed` error. Add Bearer token to header.
 
-21. The app works fine now. Create a new channel called `#statuses` according to the instruction and update the environment variable in Heroku.
+21. The app works fine now. Create a new channel called `#statuses` according to the instruction and update the environment variable `CHANNEL` in Heroku.
 
 22. Add charset to fix warning message `missing_charset`
+
+23. I noticed that the correct message should be sent from the app created earlier. After updating the environment variable `TOKEN`, works as expected now.
+
+24. Briefly fix some coding standard issues according PSR12
