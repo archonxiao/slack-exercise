@@ -17,3 +17,6 @@
 8. Fix bug `Array to string conversion in /app/web/index.php on line 25`
 
 9. Add `default` block for `switch` statement
+
+10. After triggering `user_change` event, some logs can be found in Heroku with very general info. Nothing comes up in the app. Adding more logs to check.
+
