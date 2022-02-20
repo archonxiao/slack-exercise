@@ -43,3 +43,7 @@
 19. Getting `invalid_form_data` error. Set header to include `application/json` as content type.
 
 20. Getting `not_authed` error. Add Bearer token to header.
+
+21. The app works fine now. Create a new channel called `#statuses` according to the instruction and update the environment variable in Heroku.
+
+22. Add charset to fix warning message `missing_charset`

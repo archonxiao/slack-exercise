@@ -34,9 +34,6 @@ switch ($type) {
                 $status_text = $json->event->user->profile->status_text;
                 $status_emoji = $json->event->user->profile->status_emoji;
 
-
-                // Build the message payload
-
                 // If their status contains some text
                 if (isset($status_text) && strlen($status_text) == 0) {
                     $message = [
@@ -50,19 +47,16 @@ switch ($type) {
                 }
 
                 // send the message!
-
-
                 $attachments = [
                     $message,
                 ];
 
+                // build message payload
                 $payload = [
                     'token' => TOKEN,
                     'channel' => CHANNEL,
                     'attachments' => $attachments,
                 ];
-
-                file_put_contents("php://stderr", json_encode($payload));
 
                 postMessage($payload);
 
@@ -85,9 +79,6 @@ function postMessage($payload) {
     // Build the full URL call to the API.
     $callurl = "https://slack.com/api/chat.postMessage";
 
-//    // add our payload passed through the function.
-//    $args = http_build_query($payload);
-
     // Let's build a cURL query.
     $ch = curl_init($callurl);
     curl_setopt($ch, CURLOPT_USERAGENT, "Slack Technical Exercise");
@@ -95,7 +86,7 @@ function postMessage($payload) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 
     $authorization = "Authorization: Bearer " . TOKEN;
-    $headers = array("Content-Type: application/json", $authorization);
+    $headers = array("Content-Type: application/json", "charset=utf-8", $authorization);
     curl_setopt($ch, CURLOPT_HEADER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -103,16 +94,8 @@ function postMessage($payload) {
 
     $response = curl_exec($ch);
 
-    file_put_contents("php://stderr", $response);
-
     $ch_response = json_decode($response);
     if ($ch_response->ok == FALSE) {
         error_log($ch_response->error);
     }
 }
-
-
-
-
-
-
