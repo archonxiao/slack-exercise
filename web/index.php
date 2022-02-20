@@ -82,13 +82,8 @@ switch ($type) {
 
 function postMessage($payload) {
 
-    // Make a cURL call
-
-    // add our payload passed through the function.
-    $args = http_build_query($payload);
-
     // Build the full URL call to the API.
-    $callurl = "https://slack.com/api/chat.postMessage" . "?" . $args;
+    $callurl = "https://slack.com/api/chat.postMessage";
 
     // Let's build a cURL query.
     $ch = curl_init($callurl);
@@ -96,16 +91,17 @@ function postMessage($payload) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 
-    if (array_key_exists("filename", $payload)) {
-        $callurl = $url . $method;
-        $headers = array("Content-Type: multipart/form-data"); // cURL headers for file uploading
-        curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-    }
+    $headers = array("Content-Type: application/x-www-form-urlencoded");
+    curl_setopt($ch, CURLOPT_HEADER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
-    $ch_response = json_decode(curl_exec($ch));
+    $response = curl_exec($ch);
+
+    file_put_contents("php://stderr", $response);
+
+    $ch_response = $response;
     if ($ch_response->ok == FALSE) {
         error_log($ch_response->error);
     }
